@@ -15,6 +15,6 @@ For method 1:
 - Second, change what calculation to do. In its original configuration, these scripts will run the python program pytest.py once on each input in substest2.txt
 - Third, change the list of subjects (or generally, arguments) to loop over. You will have to supply this yourself, and it is important that each line contain exactly one subject and nothing else.
 - To run, type the following command: bash submit-driver.sh submit-python-example.sh substest2.txt
-- - As an initial test, this should submit 10 jobs, one for each subject in substest2.txt
-- - The resulting slurm output files (.out extension) should contain messages displaying the correct subject and checking that Python can load correctly. You can add your own Python code here as a way to check that all the Python functionality you desire can load and run correctly. E.g., you could add import nilearn to the top of pytest.py to check that nilearn can be loaded in Python running in this context.
+ - As an initial test, this should submit 10 jobs, one for each subject in substest2.txt
+ - The resulting slurm output files (.out extension) should contain messages displaying the correct subject and checking that Python can load correctly. You can add your own Python code here as a way to check that all the Python functionality you desire can load and run correctly. E.g., you could add import nilearn to the top of pytest.py to check that nilearn can be loaded in Python running in this context.
   
