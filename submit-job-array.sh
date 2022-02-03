@@ -14,12 +14,12 @@
 #SBATCH --mail-type=END
 # ------------------------------------------
 
-SUBJECTS_FILE='substest2.txt' 
+SUBJECTS_FILE='substest2.txt'
 
 # Parse the participants.tsv file and extract one subject ID from the line corresponding to this SLURM task.
 subject=$( sed "${SLURM_ARRAY_TASK_ID}q;d" ${SUBJECTS_FILE} )
 
-# Compose the command line
+# Compose the command line: here is where you can specify what program to run on each subject / each job.
 python pytest.py $subject # test python
 echo $subject # test basic job array logic
 echo $SLURM_ARRAY_TASK_ID # test basic job array logic
