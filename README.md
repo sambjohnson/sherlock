@@ -19,15 +19,16 @@ For method 1:
 - Second, change what calculation to do. In its original configuration, these scripts will run the python program pytest.py once on each input in substest2.txt
 - Third, change the list of subjects (or generally, arguments) to loop over. You will have to supply this yourself, and it is important that each line contain exactly one subject and nothing else.
 - To run, type the following command: ```bash submit-driver.sh submit-YOUR-CODE.sh YOUR-SUBJECTS.txt```
+- In English: bash runs the script submit-driver.sh, which loops over YOUR-SUBJECTS.txt, submitting one job per subject with the logic of submit-YOUR-CODE.sh 
 
 For method 2:
-- This method involves three files: submit-job-array-example-2.sh, pytest.py, and substest2.txt.
-  - To run, type the following command: ```sbatch submit-job-array-example-2.sh substest2.txt```
+- This method involves three files: submit-job-array.sh, pytest.py, and substest2.txt.
+  - To run, type the following command: ```sbatch submit-job-array.sh substest2.txt```
   - As a test, before making your own modifications, this should create a job array of ten jobs, each with its own .out file. These files should show the correct subject for each respective job as well as a successful python execution. (pytest.py will try to add 3+4; if this doesn't work, there's definitely a problem!)
-- To adapt this code for your own use, first change parameters in submit-job-array-example-2.sh. (This file holds the slurm parameters, such as how many CPUs to request and for how long.)
-- Second, change what calculation to do. In this case, the script submit-job-array-example-2.sh executes pytest.py, but you can replace this by specifying your own computations. For an example of a different calculation, see submit-fs-template.sh.
+- To adapt this code for your own use, first change parameters in submit-job-array.sh. (This file holds the slurm parameters, such as how many CPUs to request and for how long.)
+- Second, change what calculation to do: this is specified at the end/bottom of the script submit-job-array.sh. By default, it executes pytest.py, but you can replace this by specifying your own computations. For an example of a different calculation, see submit-fs-template.sh.
 - Third, Specify your own subjects file.
   - IMPORTANT: In the current setup, you must manually change the submit script to reflect the number of subjects (lines to read in the subject file).
   - To do this, change the line `#SBATCH --array 1-10` to `#SBATCH --array 1-NumberOfSubjects`.
   - Assuming a properly formatted subject file with one subject per line, you could get this with the linux command `cat your-subjects-file.txt | wc -l`. 
-- To run your version, type the following command: ```sbatch submit-job-array.sh YOUR-SUBJECTS.txt```. Your own modifi
+- To run your version, type the following command: ```sbatch submit-job-array.sh YOUR-SUBJECTS.txt```. Your
