@@ -31,4 +31,4 @@ For method 2:
   - IMPORTANT: In the current setup, you must manually change the submit script to reflect the number of subjects (lines to read in the subject file).
   - To do this, change the line `#SBATCH --array 1-10` to `#SBATCH --array 1-NumberOfSubjects`.
   - Assuming a properly formatted subject file with one subject per line, you could get this with the linux command `cat your-subjects-file.txt | wc -l`. 
-- To run your version, type the following command: ```sbatch submit-job-array.sh YOUR-SUBJECTS.txt```. Your
+- To run your version, type the following command: ```sbatch submit-job-array.sh YOUR-SUBJECTS.txt```.
